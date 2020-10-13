@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.flexapp.flex.viewmodels.SettingsViewModel" />
+
+        <variable
+            name="parent"
+            type="com.flexapp.flex.interfaces.ISettingsFragment" />
+
+        <import type="com.flexapp.flex.utils.Utils"/>
+
+    </data>
+
+    <RelativeLayout
+        android:background="@color/colorBase"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp">
+
+                <EditText
+                    android:id="@+id/edit_text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:hint="Name"
+                    android:text="@={data.name}"
+                    android:inputType="text"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/edit_text_email"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:hint="Email"
+                    android:text="@={data.email}"
+                    android:inputType="textEmailAddress"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/edit_text_date_of_birth"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:hint="Date of Birth"
+                    android:inputType="text"
+                    android:text="@{data.date}"
+                    android:onClick="@{() -> parent.onDateClicked()}"
+                    android:textAlignment="center" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:background="@color/colorPrimary"
+                        android:padding="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="16dp"
+                            android:textStyle="bold"
+                            android:id="@+id/text_view_measuring_system"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Measuring System" />
+
+                        <RadioGroup
+                            android:id="@+id/radio_group_measuring_system"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_view_measuring_system"
+                            android:layout_alignLeft="@+id/text_view_measuring_system">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_metric"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="@{data.measuringSystem == Utils.MEASURING_SYSTEM.METRIC}"
+                                android:onClick="@{() -> data.setMeasuringSystem(Utils.MEASURING_SYSTEM.METRIC)}"
+                                android:text="Metric" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_imperial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="@{data.measuringSystem == Utils.MEASURING_SYSTEM.IMPERIAL}"
+                                android:onClick="@{() -> data.setMeasuringSystem(Utils.MEASURING_SYSTEM.IMPERIAL)}"
+                                android:text="Imperial" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:background="@color/colorPrimary"
+                        android:padding="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:id="@+id/text_view_gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gender" />
+
+                        <RadioGroup
+                            android:id="@+id/radio_group_gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_view_gender"
+                            android:layout_alignLeft="@+id/text_view_gender">
+
+                            <RadioButton
+                                android:id="@+id/radio_male"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="@{data.gender == Utils.GENDER.MALE}"
+                                android:onClick="@{() -> data.setGender(Utils.GENDER.MALE)}"
+                                android:text="Male" />
+
+                            <RadioButton
+                                android:id="@+id/radio_female"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="@{data.gender == Utils.GENDER.FEMALE}"
+                                android:onClick="@{() -> data.setGender(Utils.GENDER.FEMALE)}"
+                                android:text="Female" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:text="Save"
+                    android:onClick="@{() -> parent.onSaveClicked()}"
+                    android:backgroundTint="@color/colorAccent" />
+
+                <Button
+                    android:id="@+id/button_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:onClick="@{() -> parent.onLogoutClicked()}"
+                    android:text="Logout" />
+
+                <TextView
+                    android:textColor="@android:color/holo_red_dark"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/text_view_reset_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:onClick="@{() -> parent.onResetPasswordClicked()}"
+                    android:text="reset password" />
+            </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+</layout>

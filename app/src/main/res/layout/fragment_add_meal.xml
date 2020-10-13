@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.flexapp.flex.viewmodels.AddMealViewModel" />
+
+        <variable
+            name="parent"
+            type="com.flexapp.flex.interfaces.IAddMealFragment" />
+
+        <import type="com.flexapp.flex.utils.Converters"/>
+
+        <import type="com.flexapp.flex.utils.Utils"/>
+
+    </data>
+
+    <RelativeLayout
+        android:background="@color/colorBase"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_food_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/image_view_food"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:src="@{Converters.getImage(data.imageRef)}"
+                            android:onClick="@{() -> parent.onImageClick()}"
+                            android:scaleType="centerCrop" />
+
+                        <TextView
+                            android:gravity="center_horizontal"
+                            android:id="@+id/text_view_click_to_add_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:text="Click to add image"
+                            android:layout_alignBottom="@+id/image_view_food" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/button_scan_barcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scan Barcode"
+                    android:onClick="@{() -> parent.onScanBarcodeClick()}"
+                    android:layout_below="@+id/card_view_food_image"
+                    android:layout_alignRight="@+id/card_view_food_image" />
+
+                <LinearLayout
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/button_scan_barcode">
+
+                    <EditText
+                        android:id="@+id/edit_text_food_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Food Name"
+                        android:inputType="text"
+                        android:text="@={data.title}"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/edit_text_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Description"
+                        android:lines="3"
+                        android:inputType="text"
+                        android:text="@={data.description}"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/edit_text_calories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Calories"
+                        android:text="@={Converters.intToString(data.calories)}"
+                        android:inputType="number"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/edit_text_fats"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Fats"
+                        android:text="@={Converters.intToString(data.fats)}"
+                        android:inputType="number"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/edit_text_proteins"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Proteins"
+                        android:text="@={Converters.intToString(data.protein)}"
+                        android:inputType="number"
+                        android:textAlignment="center" />
+
+                    <EditText
+                        android:id="@+id/edit_text_sugar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Sugar"
+                        android:inputType="number"
+                        android:text="@={Converters.intToString(data.sugar)}"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/button_save"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:onClick="@{() -> parent.onSaveClick()}"
+                        android:backgroundTint="@color/colorAccent" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+</layout>

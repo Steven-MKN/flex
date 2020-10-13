@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.flexapp.flex.viewmodels.ReportsViewModel" />
+
+        <variable
+            name="parent"
+            type="com.flexapp.flex.interfaces.IReportsFragment" />
+
+    </data>
+
+    <RelativeLayout
+        android:background="@color/colorBase"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button_update_targets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:onClick="@{() -> parent.onUpdateTargetsClick()}"
+                    android:text="Update Targets" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Height" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <view
+                        android:id="@+id/line_view_height"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        class="im.dacer.androidcharts.LineView" />
+                </HorizontalScrollView>
+
+                <TextView
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <view
+                        android:id="@+id/line_view_weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        class="im.dacer.androidcharts.LineView" />
+                </HorizontalScrollView>
+
+                <TextView
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calories" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <view
+                        android:id="@+id/line_view_calories"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        class="im.dacer.androidcharts.LineView" />
+                </HorizontalScrollView>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+</layout>

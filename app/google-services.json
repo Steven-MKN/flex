@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "156354837731",
+    "firebase_url": "https://flex-c48bc.firebaseio.com",
+    "project_id": "flex-c48bc",
+    "storage_bucket": "flex-c48bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156354837731:android:7a5fbc824c316d3f7f99d6",
+        "android_client_info": {
+          "package_name": "com.example.flexapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156354837731-9nvmcmdp0fog5g2h7ljlc4oadpnthb7g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flexapp",
+            "certificate_hash": "6e24fdce8dba5fb90b1dae9fe804632621f66cc1"
+          }
+        },
+        {
+          "client_id": "156354837731-mtq69n8hle84evasibram5qnn87q9h7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCImlK7YKJE9UucsiluUV6E35NnJ3dNMrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156354837731-mtq69n8hle84evasibram5qnn87q9h7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:156354837731:android:796f6368f8a2ac497f99d6",
+        "android_client_info": {
+          "package_name": "com.flexapp.flex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "156354837731-mtq69n8hle84evasibram5qnn87q9h7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCImlK7YKJE9UucsiluUV6E35NnJ3dNMrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "156354837731-mtq69n8hle84evasibram5qnn87q9h7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.flexapp.flex.viewmodels.TodayViewModel" />
+
+        <variable
+            name="parent"
+            type="com.flexapp.flex.interfaces.ITodayFragment" />
+
+        <import type="com.flexapp.flex.utils.Converters"/>
+
+        <import type="com.flexapp.flex.utils.Utils"/>
+
+    </data>
+
+    <RelativeLayout
+        android:background="@color/colorBase"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:paddingBottom="200dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/todays_figures"
+                    android:padding="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="7dp">
+
+                        <RelativeLayout
+                            android:background="@color/colorPrimary"
+                            android:padding="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal"
+                                android:id="@+id/layout_weight_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_weight"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Weight in "
+                                    android:lines="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/tv_weight"
+                                    android:text="@{Utils.getWeightMeasure(data.measuringSystem)}"/>
+
+                            </LinearLayout>
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:selectAllOnFocus="true"
+                                android:layout_below="@+id/layout_weight_text"
+                                android:inputType="number"
+                                android:text="@={Converters.intToString(data.weight)}"
+                                android:textAlignment="center" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="7dp">
+
+                        <RelativeLayout
+                            android:background="@color/colorPrimary"
+                            android:padding="30dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal"
+                                android:id="@+id/layout_height_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_height"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Height in "
+                                    android:lines="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/tv_height"
+                                    android:text="@{Utils.getLengthMeasure(data.measuringSystem)}"/>
+                            </LinearLayout>
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:selectAllOnFocus="true"
+                                android:layout_below="@+id/layout_height_text"
+                                android:inputType="number"
+                                android:text="@={Converters.intToString(data.height)}"
+                                android:textAlignment="center" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_meals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:meals="@{data.mealViewModels}"
+                    app:itodayfrag="@{parent}"
+                    android:layout_below="@+id/todays_figures" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_meal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_alignParentRight="true"
+            android:onClick="@{() -> parent.addMealClick()}"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</layout>

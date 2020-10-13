@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        
+        <variable
+            name="data"
+            type="com.flexapp.flex.viewmodels.MealViewModel" />
+        
+        <variable
+            name="parent"
+            type="com.flexapp.flex.interfaces.ITodayFragment" />
+        
+    </data>
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:onClick="@{() -> parent.editMealClick(data.id)}"
+        app:cardCornerRadius="7dp">
+
+        <RelativeLayout
+            android:background="@color/colorPrimary"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:id="@+id/meal_title"
+                android:text="@{data.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/meal_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:maxLines="3"
+                android:text="@{data.description}"
+                android:layout_toLeftOf="@+id/meal_edit"
+                android:layout_below="@+id/meal_title" />
+
+            <ImageView
+                android:id="@+id/meal_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

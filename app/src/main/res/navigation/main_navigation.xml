@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:id="@+id/main_navigation" app:startDestination="@+id/todayFragment">
+    <fragment android:label="Today" android:name="com.flexapp.flex.TodayFragment" android:id="@+id/todayFragment">
+        <action android:id="@+id/action_todayFragment_to_addMealFragment" app:destination="@+id/addMealFragment">
+            <argument android:name="mealId" android:defaultValue="@null" app:argType="string" app:nullable="true"/>
+        </action>
+    </fragment>
+    <fragment android:label="Reports" android:name="com.flexapp.flex.ReportsFragment" android:id="@+id/reportsFragment">
+        <action android:id="@+id/action_reportsFragment_to_updateTargetsFragment" app:destination="@+id/updateTargetsFragment"/>
+    </fragment>
+    <fragment android:label="Update Targets" android:name="com.flexapp.flex.UpdateTargetsFragment" android:id="@+id/updateTargetsFragment"/>
+    <fragment android:label="New Meal" android:name="com.flexapp.flex.AddMealFragment" android:id="@+id/addMealFragment"/>
+    <fragment android:label="Settings" android:name="com.flexapp.flex.SettingsFragment" android:id="@+id/settingsFragment"/>
+</navigation>
